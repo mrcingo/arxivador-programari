@@ -4,12 +4,19 @@
         <meta charset="utf-8">
         <title>Kinergi: Inici de sessió</title>
     </head>
-    
+
+    <style>
+        .username {
+            postion: absolute;
+            top: 49%;
+            left: 50%;
+        }
+    </style>
+
     <body>
-        <img src = "../../images/logo.jpg">
-        <form style="align=center" method="get">
-            <input type="text" name="username" placeholder="Insereix el teu nom d'usuari.">
-            <input type="text" name="password" placeholder="Insereix la teva contrasenya.">
+        <form method="get">
+            <input class="username" type="text" name="username" placeholder="Insereix el teu nom d'usuari.">
+            <input type="password" name="password" placeholder="Insereix la teva contrasenya.">
             <input type="submit" value="Entra ja!">
         </form>
     </body>
