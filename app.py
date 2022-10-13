@@ -14,7 +14,7 @@ def test_login():
 
 @app.route('/test/register')
 def test_register():
-    return flask.render_template('tests.register.html')
+    return flask.render_template('tests/register.html')
 
 # modelos de produccion
 
