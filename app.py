@@ -14,7 +14,7 @@ def test_login():
     with open('users.json', 'r') as fr:
         users: dict = json.load(fr)
     if users.get(flask.request.args.get('username')):
-        return flask.render_template('tests/index.html')
+        return flask.redirect('/tests/index')
     return flask.render_template('tests/login.html')
 
 @app.route('/test/register')
