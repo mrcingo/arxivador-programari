@@ -2,9 +2,9 @@ import flask
 
 app = flask.Flask(__name__)
 
-@application.route('/')
+@app.route('/')
 def index(request):
     return '<h1>test</h1>'
 
 if __name__ == '__main__':
-    application.run()
+    app.run()
