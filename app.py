@@ -21,12 +21,10 @@ def test_login():
 def test_register():
     with open('users.json', 'r') as fr:
         users: dict = json.load(fr)
-    print(users)
-    users[flask.request.args.get('username')] = users[flask.request.args.get('password')]
 
     if not users.get(flask.request.args.get('username')) and flask.request.args.get('username') and flask.request.args.get('password'):
+        users[flask.request.args.get('username')] = flask.request.args.get('password')
         with open('users.json', 'w') as fw:
-            print(users) 
             json.dump(users, fw)
         return flask.redirect('/test/index')
     return flask.render_template('tests/register.html')
