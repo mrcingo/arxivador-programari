@@ -2,46 +2,47 @@ import flask
 import json
 
 app = flask.Flask(__name__)
-                     
-# modelos de prueba
 
-@app.route('/test/index')
-def test_index():
-    return flask.render_template('tests/index.html')
 
-@app.route('/test/login')
-def test_login():
-    with open('users.json', 'r') as fr:
-        users: dict = json.load(fr)
-    if users.get(flask.request.args.get('username')):
-        return flask.redirect('/test/index')
-    return flask.render_template('tests/login.html')
-
-@app.route('/test/register')
-def test_register():
-    with open('users.json', 'r') as fr:
-        users: dict = json.load(fr)
-
-    if not users.get(flask.request.args.get('username')) and flask.request.args.get('username') and flask.request.args.get('password'):
-        users[flask.request.args.get('username')] = flask.request.args.get('password')
-        with open('users.json', 'w') as fw:
-            json.dump(users, fw)
-        return flask.redirect('/test/index')
-    return flask.render_template('tests/register.html')
-
-# modelos de produccion
-
-@app.route('/index')
+@app.route('/')
 def index():
-    return flask.render_template('production/index.html')
+    with open('users.json', 'w') as file:
+        if not flask.cookies('SID'):
+            return '<h1>No has creat una sesio!</h1>\n<h3>Aixi que no pots acceir al producte<h3>'
+    return flask.render_template('tests/index.html')
 
 @app.route('/login')
 def login():
-    return flask.render_template('production/login.html')
+    if flask.cookies.get('SID'):
+        return '<h1>Ja estas registrat!</h1>'
+    if not flask.request.args.get('username'
+    ) and flask.request.args.get('password'):
+        return flask.render_template('tests/login.html')
+
+    with open('users.json', 'r') as file:
+        if json.load(file).get(flask.request.args.get('username')
+        ) == flask.request.args.get('password'):
+            response = flask.make_response(flask.redirect('/index'))
+            response.set_cookie('SID', '1')
+            return response
+        else:
+            return flask.render_template('tests/login.html')
 
 @app.route('/register')
 def register():
-    return flask.render_template('production/register.html')
+    if flask.cookies.get('SID'):
+        return '<h1>Ja estas registrat!</h1>'
+    if not flask.request.args.get('username'
+    ) and flask.request.args.get('password'):
+        return flask.render_template('tests/register.html')
 
-if __name__ == '__main__':
-    app.run()
+    with open('users.json', 'r') as file:
+        if not json.load(file).get(flask.request.args.get('username')):
+            response = flask.make_response(flask.redirect('/index'))
+            response.set_cookie('SID', '1')
+            users = json.load(file)
+            users[flask.request.args.get('username')] = flask.request.args.get('password')
+            json.dump(file, users)
+            return response
+        else:
+            return flask.render_template('tests/login.html')
