@@ -6,34 +6,52 @@
     </head>
 
     <style>
+        .box {width: 80%;
+        height: 100%; background-color: rgb(255, 255, 255);
+        box-shadow:
+  2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+  6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+  12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+  22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+  41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+  100px 100px 80px rgba(0, 0, 0, 0.35)
+;
+  margin-left: 7%;
+        }
         body {background-image:url(https://images.unsplash.com/photo-1560780552-ba54683cb263?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80) ;}
         form { text-align: center;
         }
-        input {margin-top: 1%;}
+        input { margin: 1%;}
         h1 {text-align: center; font-family: 'Courier New', Courier, monospace;}
         img {width: 100px;
-        border-radius: 50px;}
+        border-radius: 50px; }
+        .c {margin-bottom: 3%;}
     </style>
 
     <body>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyTqZzX6qspPRMlWsOPlpDHsfE6YWRGlC2CzauUoXQ&s" href="/test/index">
-        <h1>Registra't</h1>
-        <form method="get">
-            <input type="text" placeholder="Insereix el teu nom">
         
-            <br/>
+        <div class="box">
             
-            <input type="text" placeholder="Insereix el teu cognom">
-            <br/>
-            <input type="text" placeholder="Posa el teu e-mail">
-            <br/>
-            <input type="text" name="username" placeholder="Insereix el teu nom d'usuari.">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyTqZzX6qspPRMlWsOPlpDHsfE6YWRGlC2CzauUoXQ&s" href="/test/index"><h1 style="margin-top: 1%;">Registra't</h1>
+            <form method="get">
+                <input type="text" placeholder="Insereix el teu nom">
+            
+                <br/>
+                
+                <input type="text" placeholder="Insereix el teu cognom">
+                <br/>
+                <input type="text" placeholder="Posa el teu e-mail">
+                <br/>
+                <input type="text" name="username" placeholder="Insereix el teu nom d'usuari.">
+            
+                <br/>
+                <input type="password" name="password" placeholder="Insereix la teva contrasenya.">
+                <br/>
+                <input class = "c"type="submit" style="width: 8%;">
+            </form>
+        </div>
         
-            <br/>
-            <input type="password" name="password" placeholder="Insereix la teva contrasenya.">
-            <br/>
-            <input type="submit" style="width: 8%;">
         
-        </form>
+            
     </body>
 </html>
