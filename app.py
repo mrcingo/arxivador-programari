@@ -7,13 +7,13 @@ app = flask.Flask(__name__)
 @app.route('/')
 def index():
     with open('users.json', 'w') as file:
-        if not flask.cookies('SID'):
+        if not flask.request.cookies('SID'):
             return '<h1>No has creat una sesio!</h1>\n<h3>Aixi que no pots acceir al producte<h3>'
     return flask.render_template('tests/index.html')
 
 @app.route('/login')
 def login():
-    if flask.cookies.get('SID'):
+    if flask.request.cookies.get('SID'):
         return '<h1>Ja estas registrat!</h1>'
     if not flask.request.args.get('username'
     ) and flask.request.args.get('password'):
@@ -30,7 +30,7 @@ def login():
 
 @app.route('/register')
 def register():
-    if flask.cookies.get('SID'):
+    if flask.request.cookies.get('SID'):
         return '<h1>Ja estas registrat!</h1>'
     if not flask.request.args.get('username'
     ) and flask.request.args.get('password'):
