@@ -28,7 +28,7 @@ def login():
     if client:
         flask.request.set_cookie('SID', client[-1])
         return flask.redirect('/index')
-    return flask.render_template('/login')
+    return flask.render_template('login.html')
 
 @app.route('/register', methods = ['GET', 'POST'])
 def register():
