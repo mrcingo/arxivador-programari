@@ -6,9 +6,7 @@ class Manage(sqlite3.Connection):
     def __init__(self, database: str) -> None:
         super().__init__(database)
         self.execute('''
-        CREATE TABLE clients 
-        IF NOT EXISTS 
-        (id INT, username CHAR(255), password CHAR(255));
+        CREATE TABLE clients IF NOT EXISTS (id INT, username CHAR(255), password CHAR(255));
         ''')
 
     def create(self, username: str, password: str) -> dict[str, str]:
