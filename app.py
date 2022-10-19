@@ -1,5 +1,5 @@
 import flask
-from .manage import Manage
+from manage import Manage
 
 
 app = flask.Flask(__name__)
