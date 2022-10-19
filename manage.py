@@ -22,4 +22,5 @@ class Manage(sqlite3.Connection):
     def exist(self, username: str, password: str) -> bool:
         client = self.execute(f'SELECT * FROM clients WHERE username=\'{username}\'').fetchone()
         if client is not None:
-            return client 
+            return client
+        return 

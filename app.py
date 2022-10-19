@@ -9,14 +9,14 @@ manager = Manage('sqlite3.db')
 def index():
     return flask.render_template('index.html')
 
-@app.route('/login')
+@app.route('/login', methods = ['GET'])
 def login():
-    return manager.exist(flask.request.args.get('username'), flask.request.args.get(
-        'password')) if flask.request.args.get('username') and flask.request.args.get(
-        'password') else None
-    return flask.render_template('login.html')
+    username = flask.request.args.get('username')
+    password = flask.request.args.get('password')
+    client = manager.exist(username, password)
+    return flask.jsonify(client)
 
-@app.route('/register', METHODS = ['GET', 'POST'])
+@app.route('/register', methods = ['GET', 'POST'])
 def register():
     username = flask.request.args.get('username')
     password = flask.request.args.get('password')
