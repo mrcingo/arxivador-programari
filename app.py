@@ -39,7 +39,7 @@ def register():
     client = manager.create(username, password)
     if client:
         response = flask.make_response(flask.redirect('/index'))
-        response.set_cookie('SID', client['SID'])
+        response.set_cookie('SID', client['sid'])
         return response
     return flask.render_template('register.html')
 
