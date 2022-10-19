@@ -7,7 +7,10 @@ manager = Manage('sqlite3.db')
 
 @app.route('/')
 def index():
-    return flask.render_template('index.html')
+    if manager.session(flask.request.cookies.get('SID')):
+        return flask.render_template('index.html')
+    else:
+        return flask.redirect('/login')
 
 @app.route('/logout')
 def logout():
