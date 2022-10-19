@@ -11,7 +11,7 @@ class Manage(sqlite3.Connection):
         password = password.encode()
         if self.execute(f'SELECT * FROM clients WHERE username=\'{username}\'').fetchone() is None:
             id = self.execute(f'SELECT MAX(id) FROM clients').fetchone()
-            self.execute(f'INSERT INTO clients (id, username, password) VALUES ({id + 1 if id != None else 0}, \"{username}\", \"{password}\")')
+            self.execute(f'INSERT INTO clients (id, username, password) VALUES ({id[0] + 1 if id != None else 0}, \"{username}\", \"{password}\")')
             return {'username': username, 'password': password}
         return
 
