@@ -21,7 +21,7 @@ class Manage(sqlite3.Connection):
 
     def session(self, sid: str) -> bool:
         return True if self.execute(
-            f'SELECT * FROM clients WHERE session=\'{sid}\'').fetchone() != None else False
+            f'SELECT * FROM clients WHERE session=\"{sid}\"').fetchone() != None else False
 
     def exist(self, username: str, password: str) -> dict | None:
         client = self.execute(f'SELECT * FROM clients WHERE username=\'{username}\'').fetchone()
