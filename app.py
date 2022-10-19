@@ -9,22 +9,32 @@ manager = Manage('sqlite3.db')
 def index():
     return flask.render_template('index.html')
 
+@app.route('/logout')
+def logout():
+    if flask.request.cookies.get('SID'):
+        flask.request.cookies.pop('SID')
+        return flask.redirect('/login')
+    return '<h1>Not loged in.</h1>'
+
 @app.route('/login', methods = ['GET'])
 def login():
     username = flask.request.args.get('username')
     password = flask.request.args.get('password')
+    
     client = manager.exist(username, password)
-    return flask.jsonify(client)
+    if client:
+        flask.request.set_cookie('SID', client[-1])
+        return flask.redirect('/index')
 
 @app.route('/register', methods = ['GET', 'POST'])
 def register():
     username = flask.request.args.get('username')
     password = flask.request.args.get('password')
-    if username and password:
-        client = manager.create(username, password)
-        print(client)
-        if client:
-            return flask.jsonify(client)
+
+    client = manager.create(username, password)
+    if client:
+        flask.request.set_cookie('SID', client['sid'])
+        return flask.redirect('/index')
     return flask.render_template('register.html')
 
 if __name__ == "__main__":
