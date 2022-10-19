@@ -7,14 +7,9 @@ manager = Manage('sqlite3.db')
 
 @app.route('/')
 def index():
-    print(manager.session(flask.request.cookies.get('SID')))
-    if manager.session(flask.request.cookies.get('SID')):
-        if flask.request.args.get('username'):
-            print('a')
-            return flask.redirect(f'/register?username={flask.request.args.get("username")}')
-        return flask.render_template('index.html')
-    else:
-        return flask.redirect('/login')
+    if flask.request.args.get('username'):
+        return flask.redirect(f'/register?username={flask.request.args.get("username")}')
+    return flask.render_template('index.html')
 
 @app.route('/logout')
 def logout():
