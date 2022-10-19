@@ -3,7 +3,7 @@ from manage import Manage
 
 
 app = flask.Flask(__name__)
-manager =  Manage()
+manager = Manage('sqlite3.db')
 
 @app.route('/')
 def index():
@@ -11,6 +11,9 @@ def index():
 
 @app.route('/login')
 def login():
+    return manager.exist(flask.request.args.get('username'), flask.request.args.get(
+        'password')) if flask.request.args.get('username') and flask.request.args.get(
+        'password') else None
     return flask.render_template('login.html')
 
 @app.route('/register', METHODS = ['GET', 'POST'])

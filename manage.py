@@ -18,3 +18,8 @@ class Manage(sqlite3.Connection):
             self.execute(f'INSERT INTO clients (id, username, password) VALUES ({id + 1 if id != None else 0}, \"{username}\", \"{password}\")')
             return {'username': username, 'password': password}
         return
+
+    def exist(self, username: str, password: str) -> bool:
+        client = self.execute(f'SELECT * FROM clients WHERE username=\'{username}\'').fetchone()
+        if client is not None:
+            return client 
