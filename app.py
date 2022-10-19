@@ -26,7 +26,7 @@ def login():
     
     client = manager.exist(username, password)
     if client:
-        response = flask.make_response(flask.redirect('/index'))
+        response = flask.make_response(flask.redirect('/'))
         response.set_cookie('SID', client[-1])
         return response
     return flask.render_template('login.html')
@@ -38,7 +38,7 @@ def register():
 
     client = manager.create(username, password)
     if client:
-        response = flask.make_response(flask.redirect('/index'))
+        response = flask.make_response(flask.redirect('/'))
         response.set_cookie('SID', client['sid'])
         return response
     return flask.render_template('register.html')
