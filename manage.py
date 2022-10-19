@@ -8,7 +8,6 @@ class Manage(sqlite3.Connection):
         self.execute('CREATE TABLE IF NOT EXISTS clients (id INT, username CHAR(255), password CHAR(255));')
 
     def create(self, username: str, password: str) -> dict[str, str]:
-        password = password.encode()
         if self.execute(f'SELECT * FROM clients WHERE username=\'{username}\'').fetchone() is None:
             id = self.execute(f'SELECT MAX(id) FROM clients').fetchone()
             self.execute(f'INSERT INTO clients (id, username, password) VALUES ({id[0] + 1 if id[0] != None else 0}, \"{username}\", \"{password}\")')
