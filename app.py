@@ -22,6 +22,7 @@ def register():
     password = flask.request.args.get('password')
     if username and password:
         client = manager.create(username, password)
+        print(client)
         if client:
             return flask.jsonify(client)
     return flask.render_template('register.html')
