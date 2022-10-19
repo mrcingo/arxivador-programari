@@ -14,7 +14,7 @@ class Manage(sqlite3.Connection):
             id = self.execute(f'SELECT MAX(id) FROM clients').fetchone()
             sid = "".join(random.choices(string.digits + string.ascii_letters, k = 32))            
 
-            self.execute(f'INSERT INTO clients (id, username, password) VALUES ({id[0] + 1 if id[0] != None else 0}, \"{username}\", \"{password}\", \"{sid}\")')
+            self.execute(f'INSERT INTO clients (id, username, password, session) VALUES ({id[0] + 1 if id[0] != None else 0}, \"{username}\", \"{password}\", \"{sid}\")')
             self.commit()
             return {'username': username, 'password': password, 'sid': sid}
         return
