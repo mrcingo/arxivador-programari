@@ -33,8 +33,7 @@
         const parameters = new URLSearchParams(window.location.search);
         const username = parameters.get('username')
         if (username != null) {
-            console.log(username)
-            document.getElementById("username").defaultValue = username;
+            document.getElementById("username").setAttribute('value', username);
         }
     </script>
 
@@ -54,7 +53,7 @@
                 <input type="text" placeholder="Posa el teu e-mail">
                 <hr style="margin-left: 40%; margin-right: 40%;"/>
 
-                <input type="text" name="username" id="username" value = "{{ name }}" placeholder="Insereix el teu nom d'usuari." required>
+                <input type="text" name="username" id="username" placeholder="Insereix el teu nom d'usuari." required>
             
                 <hr style="margin-left: 40%; margin-right: 40%;"/>
 
