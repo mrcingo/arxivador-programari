@@ -7,7 +7,8 @@ manager = Manage('sqlite3.db')
 
 @app.route('/')
 def index():
-    if flask.request.cookies.get('SID'):
+    token = manager.session(flask.request.args.get('SID'))
+    if token:
         return flask.render_template('index.html', cookie=1)
     return flask.render_template('index.html', cookie=0)
 
