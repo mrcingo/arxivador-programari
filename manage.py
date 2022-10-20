@@ -1,9 +1,9 @@
-import sqlite3
-import random
-import string
+from sqlite3 import Connection
+from random import choices
+from string import ascii_letters, digits
 
 
-class Manage(sqlite3.Connection):
+class Manage(Connection):
 
     def __init__(self, database: str) -> None:
         super().__init__(database)
@@ -12,7 +12,7 @@ class Manage(sqlite3.Connection):
     def create(self, username: str, password: str) -> dict[str, str] | None:
         if self.execute(f'SELECT * FROM clients WHERE username=\'{username}\'').fetchone() is None:
             id = self.execute(f'SELECT MAX(id) FROM clients').fetchone()
-            sid = "".join(random.choices(string.digits + string.ascii_letters, k = 32))            
+            sid = "".join(choices(digits + ascii_letters, k = 32))            
 
             self.execute(f'INSERT INTO clients (id, username, password, session) VALUES ({id[0] + 1 if id[0] != None else 0}, \"{username}\", \"{password}\", \"{sid}\")')
             self.commit()
