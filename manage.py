@@ -20,6 +20,7 @@ class Manage(Connection):
         return
 
     def session(self, sid: str) -> bool:
+        print(self.execute(f'SELECT * FROM clients WHERE session=\"{sid}\"').fetchone())
         return True if self.execute(
             f'SELECT * FROM clients WHERE session=\"{sid}\"').fetchone() != None else False
 
