@@ -13,7 +13,7 @@ def index():
 
 @app.route('/products')
 def products():
-    token = manager.session(flask.request.args.get('SID'))[-1]
+    token = manager.session(flask.request.args.get('SID'))[-1] if token else None
     if token:
         return flask.render_template('products.html')
     return flask.redirect('/index')
