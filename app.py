@@ -17,7 +17,7 @@ def products():
 
     if token:
         return flask.render_template('products.html')
-    return flask.redirect('/index')
+    return flask.redirect('/')
 
 @app.route('/logout')
 def logout():
