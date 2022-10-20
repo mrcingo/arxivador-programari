@@ -16,6 +16,7 @@ def products():
     token = manager.session(flask.request.args.get('SID'))[-1]
     if token:
         return flask.render_template('products.html')
+    return flask.redirect('/login')
 
 @app.route('/logout')
 def logout():
