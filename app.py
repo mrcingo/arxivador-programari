@@ -33,13 +33,14 @@ def login():
 def register():
     username = flask.request.args.get('username')
     password = flask.request.args.get('password')
-
-    client = manager.create(username, password)
-    if client:
-        response = flask.make_response(flask.redirect('/'))
-        response.set_cookie('SID', client['sid'])
-        return response
-    return flask.render_template('register.html', name = "test")
+    if username and password:
+        client = manager.create(username, password)
+        if client:
+            response = flask.make_response(flask.redirect('/'))
+            response.set_cookie('SID', client['sid'])
+            return response
+        return flask.render_template('register.html')
+    return flask.render_template('register.html')
 
 if __name__ == "__main__":
     app.run()
