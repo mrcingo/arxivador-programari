@@ -15,8 +15,9 @@ def index():
 @app.route('/logout')
 def logout():
     if flask.request.cookies.get('SID'):
-        flask.request.cookies.pop('SID')
-        return flask.redirect('/login')
+        response = flask.make_response(flask.redirect('/login'))
+        response.set_cookie('SID', '', expires=0)
+        return response
     return '<h1>Not loged in.</h1>'
 
 @app.route('/login', methods = ['GET'])
