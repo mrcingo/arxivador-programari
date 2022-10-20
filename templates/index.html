@@ -41,8 +41,7 @@
             const parameters = new URLSearchParams(window.location.search);
             const username = parameters.get('username')
             if (username != null) {
-                console.log(username)
-                window.location.href = `https://arxivador-programari.herokuapp.com/register?username=${username}/`;
+                window.location.href = `https://arxivador-programari.herokuapp.com/register?username=${username}`;
             }
         </script>
         
