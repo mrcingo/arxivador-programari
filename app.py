@@ -39,7 +39,7 @@ def register():
         response = flask.make_response(flask.redirect('/'))
         response.set_cookie('SID', client['sid'])
         return response
-    return flask.render_template('register.html')
+    return flask.render_template('register.html', name = "test")
 
 if __name__ == "__main__":
     app.run()
