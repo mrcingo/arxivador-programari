@@ -14,6 +14,7 @@ def index():
 
 @app.route('/products')
 def products():
+    print(flask.request.args.get('SID'))
     token = manager.session(flask.request.args.get('SID'))
 
     if token:
