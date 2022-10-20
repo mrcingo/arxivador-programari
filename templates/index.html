@@ -37,6 +37,11 @@
         form {text-align: center;}
         </style>
 
+        <script>
+            let form = document.forms['register_redirect']
+            let username = form.elements["username"].value
+            document.cookie = `register_redirect=${username};`;
+        </script>
         
     <body>
         
@@ -50,7 +55,7 @@
         </h3>
         <h3 class="c">Comença amb el programa</h3>
         <form name="register_redirect" class="p" method="get" >
-            <input size="32" type="text" name="username" placeholder="Posa el teu nom i começa amb el nostre programa">
+            <input size="32" type="text" name="username" id="username" placeholder="Posa el teu nom i começa amb el nostre programa">
             <input type="submit">
         </form>
     </body>
