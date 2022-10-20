@@ -38,7 +38,8 @@
         </style>
 
         <script>
-            console.log(arguments[0])
+            const urlParams = new URLSearchParams(window.location.search);
+            console.log(urlParams.get('username'))
         </script>
         
     <body>
