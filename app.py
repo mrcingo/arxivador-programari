@@ -11,6 +11,12 @@ def index():
         return flask.render_template('index.html', cookie=1)
     return flask.render_template('index.html', cookie=0)
 
+@app.route('/products')
+def products():
+    token = manager.session(flask.request.args.get('SID'))[-1]
+    if token:
+        return flask.render_template('products.html')
+
 @app.route('/logout')
 def logout():
     if flask.request.cookies.get('SID'):
