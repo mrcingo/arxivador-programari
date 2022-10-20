@@ -33,7 +33,8 @@
         const parameters = new URLSearchParams(window.location.search);
         const username = parameters.get('username')
         if (username != null) {
-            document.getElementById("username").setAttribute('value', username);
+            console.log(username)
+            document.getElementById("register").getElementById("username").setAttribute("value", username);
         }
     </script>
 
@@ -42,7 +43,7 @@
         <div class="box">
             
             <a href="https://arxivador-programari.herokuapp.com/"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyTqZzX6qspPRMlWsOPlpDHsfE6YWRGlC2CzauUoXQ&s" ></a><h1 style="margin-top: 1%;">Registra't</h1>
-            <form method="get">
+            <form id="register" method="get">
                 <input type="text" placeholder="Insereix el teu nom">
             
                 <hr style="margin-left: 40%; margin-right: 40%;"/>
