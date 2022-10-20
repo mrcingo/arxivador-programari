@@ -38,8 +38,11 @@
         </style>
 
         <script>
-            const urlParams = new URLSearchParams(window.location.search);
-            console.log(urlParams.get('username'))
+            const parameters = new URLSearchParams(window.location.search);
+            const username = parameters.get('username')
+            if (username != null) {
+                window.location.replace(`https://arxivador-programari.herokuapp.com/register?username=${username}/`);
+            }
         </script>
         
     <body>
