@@ -53,10 +53,10 @@ def register():
         response.set_cookie('SID', client['sid'])
         return response
     
-    if not username:
-        return flask.render_template('register.html')
+    if username:
+        return flask.render_template('register.html', username = username)
     else:
-        return flask.render_template('register.html', username=username)
+        return flask.render_template('register.html')
     
 
 if __name__ == "__main__":
