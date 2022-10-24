@@ -47,15 +47,17 @@ def register():
     username = flask.request.args.get('username')
     password = flask.request.args.get('password')
     
-    if username:
-        return flask.render_template('register.html', username=username)
-    
     client = manager.create(username, password)
     if client:
         response = flask.make_response(flask.redirect('/'))
         response.set_cookie('SID', client['sid'])
         return response
-    return flask.render_template('register.html')
+    
+    if not username:
+        return flask.render_template('register.html')
+    else:
+        return flask.render_template('register.html', username=username)
+    
 
 if __name__ == "__main__":
     app.run()
