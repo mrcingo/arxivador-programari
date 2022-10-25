@@ -9,7 +9,7 @@ manager = Manage('sqlite3.db')
 def index():
     token = manager.session(flask.request.args.get('SID'))
     if token:
-        return flask.render_template('index.html', cookie=1)
+        return flask.jsonify(token)
     return flask.render_template('index.html', cookie=0)
 
 @app.route('/products')

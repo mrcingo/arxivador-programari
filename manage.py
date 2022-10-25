@@ -27,10 +27,8 @@ class Manage(Connection):
         return {'username': username, 'password': password, 'sid': sid}
 
     def session(self, sid: str) -> bool:
-        print(self.execute(
-            f'SELECT * FROM clients WHERE session=\"{sid}\"').fetchone())
-        return True if self.execute(
-            f'SELECT * FROM clients WHERE session=\"{sid}\"').fetchone() != None else False
+        return self.execute(
+            f'SELECT * FROM clients WHERE session=\"{sid}\"').fetchone()
 
     def exist(self, username: str, password: str) -> bool:
         client = self.execute(f'SELECT * FROM clients WHERE username=\"{username}\"').fetchone()
