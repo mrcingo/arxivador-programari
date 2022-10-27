@@ -29,7 +29,6 @@ class Account(Connection):
             return None
 
         identificator = self.execute(f'SELECT MAX(id) FROM accounts').fetchone()
-        print(identificator)
         if not identificator[0]: identificator = 0
         else: identificator = identificator[0] + 1
 
@@ -55,7 +54,20 @@ class Account(Connection):
     def login(self, username: str, password: str):
         account = self.execute(f'SELECT * FROM accounts WHERE username="{username}"').fetchone()
         
-        if not account:
+        if not account[0]:
+            return None
+
+        return {
+            'id': account[0],
+            'username': account[1],
+            'password': account[2],
+            'session': account[3]
+        }
+
+    def session(self, session: str) -> dict | None:
+        account = self.execute(f'SELECT * FROM accounts WHERE session="{session}"').fetchone()
+        
+        if not account[0]:
             return None
 
         return {
