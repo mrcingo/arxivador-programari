@@ -54,7 +54,7 @@ class Account(Connection):
     def login(self, username: str, password: str):
         account = self.execute(f'SELECT * FROM accounts WHERE username="{username}"').fetchone()
         
-        if not account[0]:
+        if not account:
             return None
 
         return {
