@@ -46,7 +46,7 @@ class Account(Connection):
         self.commit()
 
         return {
-            'id': indentificator, 
+            'id': identificator, 
             'username': username, 
             'password': password,
             'session': session
