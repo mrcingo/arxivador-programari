@@ -30,7 +30,7 @@ class Account(Connection):
 
         identificator = self.execute(f'SELECT MAX(id) FROM accounts').fetchone()
         print(identificator)
-        if not identificator: identificator = 0
+        if not identificator[0]: identificator = 0
         else: identificator = identificator[0] + 1
 
         session = choices(
