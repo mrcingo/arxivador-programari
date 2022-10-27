@@ -11,7 +11,13 @@ def login():
     password = flask.request.args.get('password')
 
     return flask.jsonify(accmanager.login(username, password))
-    
+
+@app.route('/register')
+def register():
+    username = flask.request.args.get('username')
+    password = flask.request.args.get('password')
+
+    return flask.jsonify(accmanager.register(username, password))
 
 if __name__ == "__main__":
     app.run()
