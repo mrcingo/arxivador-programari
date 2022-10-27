@@ -7,8 +7,8 @@ accmanager = Account('sqlite3.db')
 
 @app.route('/login')
 def login():
-    username = flask.request.form.get('username')
-    password = flask.request.form.get('password')
+    username = flask.request.args.get('username')
+    password = flask.request.args.get('password')
 
     return flask.jsonify(accmanager.login(username, password))
     
