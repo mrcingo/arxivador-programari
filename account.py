@@ -28,10 +28,10 @@ class Account(Connection):
         if account:
             return None
 
-        indentificator = self.execute(f'SELECT MAX(id) FROM accounts').fetchone()
-        if not indentificator:
-            indentificator = 0
-        indentificator += 1
+        identificator = self.execute(f'SELECT MAX(id) FROM accounts').fetchone()
+        if not identificator:
+            identificator = 0
+        identificator = identificator[0] + 1
 
         session = choices(
             ascii_letters + digits,
