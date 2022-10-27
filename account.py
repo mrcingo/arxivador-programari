@@ -33,10 +33,10 @@ class Account(Connection):
         if not identificator[0]: identificator = 0
         else: identificator = identificator[0] + 1
 
-        session = choices(
+        session = ''.join(choices(
             ascii_letters + digits,
             k = 32
-        )
+        ))
 
         self.execute(f'''
         INSERT INTO accounts 
