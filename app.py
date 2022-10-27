@@ -10,14 +10,32 @@ def login():
     username = flask.request.args.get('username')
     password = flask.request.args.get('password')
 
-    return flask.jsonify(accmanager.login(username, password))
+    account = accmanager.login(username, password)
+
+    if account:
+        response = flask.make_response(
+            flask.redirect('index.html')
+        )
+        response.set_cookie('SID', account['session'])
+
+        return response
+    return flask.render_template('register.html')
 
 @app.route('/register')
 def register():
     username = flask.request.args.get('username')
     password = flask.request.args.get('password')
 
-    return flask.jsonify(accmanager.register(username, password))
+    account = accmanager.register(username, password)
+
+    if account:
+        response = flask.make_response(
+            flask.redirect('index.html')
+        )
+        response.set_cookie('SID', account['session'])
+
+        return response
+    return flask.render_template('register.html')
 
 if __name__ == "__main__":
     app.run()
