@@ -29,9 +29,8 @@ class Account(Connection):
             return None
 
         identificator = self.execute(f'SELECT MAX(id) FROM accounts').fetchone()
-        if not identificator:
-            identificator = 0
-        identificator = identificator[0] + 1
+        if not identificator: identificator = 0
+        else: identificator = identificator[0] + 1
 
         session = choices(
             ascii_letters + digits,
@@ -41,7 +40,7 @@ class Account(Connection):
         self.execute(f'''
         INSERT INTO accounts 
         (id, username, password, session) VALUES 
-        ({indentificator}, "{username}", "{password}", "{session}")
+        ({identificator}, "{username}", "{password}", "{session}")
         ''')
         self.commit()
 
