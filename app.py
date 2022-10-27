@@ -27,7 +27,7 @@ def register():
     password = flask.request.args.get('password')
 
     account = accmanager.register(username, password)
-
+    print(account)
     if account:
         response = flask.make_response(
             flask.redirect('index.html')
