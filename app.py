@@ -10,7 +10,7 @@ def login():
     username = flask.request.form.get('username')
     password = flask.request.form.get('password')
 
-    return accmanager.login(username, password)
+    return flask.jsonify(accmanager.login(username, password))
     
 
 if __name__ == "__main__":
