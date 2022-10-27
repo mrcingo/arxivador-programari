@@ -1,6 +1,6 @@
 import flask
 
-from .account import Account
+from account import Account
 
 app = flask.Flask(__name__)
 accmanager = Account('sqlite3.db')
