@@ -9,6 +9,7 @@ accmanager = Account('sqlite3.db')
 def index():
     session = flask.request.cookies.get('SID')
     account_session = accmanager.session(session)
+    print(account_session)
     if not account_session:
         return flask.render_template('index.html', cookie = 0)
     return flask.render_template('index.html', cookie = 1)
