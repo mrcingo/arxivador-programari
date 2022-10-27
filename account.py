@@ -67,7 +67,7 @@ class Account(Connection):
     def session(self, session: str) -> dict | None:
         account = self.execute(f'SELECT * FROM accounts WHERE session="{session}"').fetchone()
         
-        if not account[0]:
+        if not account:
             return None
 
         return {
