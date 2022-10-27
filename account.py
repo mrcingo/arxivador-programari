@@ -29,6 +29,7 @@ class Account(Connection):
             return None
 
         identificator = self.execute(f'SELECT MAX(id) FROM accounts').fetchone()
+        print(identificator)
         if not identificator: identificator = 0
         else: identificator = identificator[0] + 1
 
