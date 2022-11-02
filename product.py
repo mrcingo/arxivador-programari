@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS products (
         id = self.execute(
             f'SELECT * FROM products WHERE account = "{self.session}"').fetchall()
         self.execute(
-            f'INSERT INTO products VALUES ({len(id) + 1 if id else 0}, "{self.session}", "{name}", {amount})')
+            f'INSERT INTO products VALUES ({(len(id) - 1) + 1 if id else 0}, "{self.session}", "{name}", {amount})')
         self.commit()
 
         return {
