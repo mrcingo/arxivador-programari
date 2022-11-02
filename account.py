@@ -54,7 +54,8 @@ CREATE TABLE IF NOT EXISTS accounts (
         id = self.execute(f'SELECT MAX(id) FROM accounts;').fetchone()[0]
         if not id:
             id = 0
-        id += 1
+        else:
+            id += 1
 
         sid = ''.join(
             random.choices(
