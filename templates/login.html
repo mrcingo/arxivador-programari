@@ -2,23 +2,67 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Kinergi: Inici de sessió</title>
+        <title>Empresa: Inici de sessió</title>
     </head>
 
     <style>
-        form { 
+        div {
+            width: 300px;
+            border: 1px solid;
+            border-radius: 4px;
+            padding: 20px   ;
+            
             position: absolute;
-            top: 40%;
-            left: 35%;
+            top: 45%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%);
+
+            margin-left: auto;
+            margin-right: auto;
         }
+
+        input {
+            display: block;
+            margin: auto;
+            font-weight: normal;
+            text-align: center;
+            font-family: 'Lexend Deca', sans-serif;
+        }
+
+        h2 {
+            font-weight: normal;
+            text-align: center;
+            font-family: 'Lexend Deca', sans-serif;
+        }
+
+        p {
+            color: red;
+            font-family: 'Lexend Deca', sans-serif;
+            font-size: 12px;
+            text-align: center;
+        }
+
     </style>
 
     <body>
-        <a href="https://arxivador-programari.herokuapp.com/"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyTqZzX6qspPRMlWsOPlpDHsfE6YWRGlC2CzauUoXQ&s" ></a>
-        <form method="get">
-            <input type="text" name="username" placeholder="Insereix el teu nom d'usuari.">
-            <input type="password" name="password" placeholder="Insereix la teva contrasenya.">
-            <input style="position: relative; right: 3%; margin: 3%;; width: 86%" type="submit" value="Entra ja!">
-        </form>
+        <div>
+            <h2>Incia la teva sessió!</h2>
+            <form method="get">
+                <input style="width: 200px;" type="text" name="username" placeholder="Insereix el teu nom d'usuari." required>    
+                <hr style="margin-left: 0%; margin-right: 0%;">
+
+                <input style="width: 200px;" type="password" name="password" placeholder="Insereix la teva contrasenya." required>
+                <hr style="margin-left: 0%; margin-right: 0%;">
+
+                <input style="width: 210px;" type="submit" value="Entra ja!">
+            </form>
+
+            <p id="message"></p>
+            <script>
+                message = '{{ message }}'
+                if (message != '') document.getElementById("message").innerHTML = message;
+            </script>
+        </div>
     </body>
 </html>

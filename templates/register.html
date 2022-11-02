@@ -2,61 +2,88 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Kinergi: Crea el teu compta.</title>
+        <title>Empresa: Crea el teu compta</title>
     </head>
 
     <style>
-        .box {width: 80%;
-        height: 100%; background-color: rgb(255, 255, 255);
-        box-shadow:
-  2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
-  6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
-  12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
-  22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
-  41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
-  100px 100px 80px rgba(0, 0, 0, 0.35)
-;
-  margin-left: 8%; 
-  margin-top: 6%;
+        div {
+            width: 80%;
+            height: 100%; 
+            background-color: rgb(255, 255, 255);
+
+            box-shadow:
+                    2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+                    6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+                    12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+                    22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+                    41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+                    100px 100px 80px rgba(0, 0, 0, 0.35);
+
+            margin-left: 8%; 
+            margin-top: 6%;
         }
-        body {background-image:url(https://images.unsplash.com/photo-1560780552-ba54683cb263?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80) ;}
-        form { text-align: center;
+
+        body {
+            background-image:url(
+                https://images.unsplash.com/photo-1560780552-ba54683cb263?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80);
         }
-        input { margin: 1%;}
-        h1 {text-align: center; font-family: 'Courier New', Courier, monospace;}
-        img {width: 100px;
-        border-radius: 50px; }
-        .c {margin-bottom: 3%;}
+        form {
+            text-align: center;
+        }
+
+        input { 
+            margin: 1%;
+        }
+        h1 {
+            text-align: center; 
+            font-family: 'Courier New', Courier, monospace;
+        }
+        img {
+            width: 100px;
+            border-radius: 50px;
+        }
+
+        .submit {
+            margin-bottom: 3%;
+        }
     </style>
 
     <body>
         
         <div class="box">
             
-            <a href="https://arxivador-programari.herokuapp.com/"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyTqZzX6qspPRMlWsOPlpDHsfE6YWRGlC2CzauUoXQ&s" ></a><h1 style="margin-top: 1%;">Registra't</h1>
+            <a href="/">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyTqZzX6qspPRMlWsOPlpDHsfE6YWRGlC2CzauUoXQ&s">
+            </a>
+            
+            <h1 style="margin-top: 1%;">Registra't</h1>
+
             <form id="register" method="get">
                 <input type="text" placeholder="Insereix el teu nom">
-            
                 <hr style="margin-left: 40%; margin-right: 40%;"/>
-
             
                 <input type="text" placeholder="Insereix el teu cognom">
                 <hr style="margin-left: 40%; margin-right: 40%;"/>
+                
                 <input type="text" placeholder="Posa el teu e-mail">
                 <hr style="margin-left: 40%; margin-right: 40%;"/>
 
                 <input type="text" name="username" value="{{ username }}" id="username" placeholder="Insereix el teu nom d'usuari." required>
-            
                 <hr style="margin-left: 40%; margin-right: 40%;"/>
 
-                <input type="password" name="password" placeholder="Insereix la teva contrasenya.">
+                <input type="password" name="password" placeholder="Insereix la teva contrasenya." required>
                 <hr style="margin-left: 40%; margin-right: 40%;"/>
 
-                <input class = "c"type="submit" style="width: 8%;">
+                <input class = "submit" type="submit" value="Envair" style="width: 8%;">
             </form>
+
+            <p style="text-align: center; color: red; font-family: 'Lexend Deca', sans-serif; font-size: 12px;" id="message"></p>
+            <script>
+                var message = '{{ message }}'
+                if (message != '') {
+                    document.getElementById("message").innerHTML = message;
+                }
+            </script>
         </div>
-        
-        
-            
     </body>
 </html>

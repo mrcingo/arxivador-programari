@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Typewriter</h1>
+
+<p id="demo"></p>
+
+<script>
+var index = 0;
+var text = 'Lorem ipsum dummy text blabla.';
+var speed = 50;
+
+function subtitle() {
+  if (index < text.length) {
+    document.getElementById("demo").innerHTML += text.charAt(index);
+    index++;
+    setTimeout(subtitle, speed);
+  }
+}
+subtitle()
+</script>
+
+</body>
+</html>

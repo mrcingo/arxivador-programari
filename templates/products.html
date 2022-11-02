@@ -1,32 +1,65 @@
 <!DOCTYPE html>
 <html>  
+    
+    <head>
+        <title>Empresa: Productes disponibles</title>
+    </head>
+
     <style>
-    table, th, td {
-    border:1px solid black;
-    }
+        body {
+            font-family: 'Lexend Deca', sans-serif;
+        }
+
+        p {
+            font-weight: lighter;
+        }
+
+        th, td {
+            border: 0.5mm solid black;
+        }
+
     </style>
+
     <body>
-        <h2>A basic HTML table</h2>
-
-        <table style="width:100%">
-            <tr>
-                <th>Company</th>
-                <th>Contact</th>
-                <th>Country</th>
+        {% if account.products %}
+        <table style="width: 100%">
+            <tr style="height: 10px;">
+                <th>Identificador</th>
+                <th>Nom</th>
+                <th>Cuantitat</th>
             </tr>
-            <tr>
-                <td>Alfreds Futterkiste</td>
-                <td>Maria Anders</td>
-                <td>Germany</td>
-            </tr>
-            <tr>
-                <td>Centro comercial Moctezuma</td>
-                <td>Francisco Chang</td>
-                <td>Mexico</td>
-            </tr>
+            {% for product in account['products'] %}
+                <tr style="font-weight: normal;">
+                    <th>
+                        <p>{{ product.id}}</p>
+                    </th>
+                    <th>
+                        <p>{{ product.name }}</p>
+                    </th>
+                    <th>
+                        <p>{{ product.amount }}</p>
+                    </th>
+                    <th>
+                        <input onclick="window.location.href = '/products/delete?id={{ product.id }}'" type="submit" value="Suprimir">
+                    </th>
+                </tr>
+            {% endfor %}
         </table>
-
-        <p>To understand the example better, we have added borders to the table.</p>
+        <form action="/products/create">
+            <input type="text" id="name" placeholder="Nom del producte." name="name" required>
+            <input type="number" id="amount" placeholder="Cuantitat del producte." name="amount" required>
+            <input type="submit" value="Afageix el producte" required>
+        </form>
+        {% elif account.message == 'La conta no te productes en la base de dades.' %}
+        <form action="/products/create">
+            <input type="text" id="name" placeholder="Nom del producte." name="name" required>
+            <input type="number" id="amount" placeholder="Cuantitat del producte." name="amount" required>
+            <input type="submit" value="Afageix el producte" required>
+        </form>
+        {% else %}
+        <h1>Alguna cosa està malament!</h1>
+        <p>{{ account.message }}</p>
+        {% endif %}
     </body>
 </html>
 

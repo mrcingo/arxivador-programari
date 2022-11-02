@@ -1,67 +1,86 @@
+<!DOCTYPE html>
 <html>
     <head>
-        <title>Kinergi</title>
-        
-
+        <title>Empresa: Pàgina principal</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    
-        <style>
-            body {background-color: rgb(255, 255, 255);}
-            h1 {color: darkcyan;font-family: 'Courier New', Courier, monospace;}
-            h1 {text-align: left;font-family: 'Courier New', Courier, monospace;}
-            h2 {text-align: center;font-family: 'Courier New', Courier, monospace;}
-            h3 {font-family: 'Courier New', Courier, monospace;
-        text-align: center;
+
+    <style>
+
+        h1 {
+            font-weight: 550;
+            text-align: center;
         }
-    
-        
-            p {text-align: right;
-            float: right;
-            font-family: 'Courier New', Courier, monospace;}
-            img {width: 50;
-            border-radius:100px;    
-            float: left;
-            font-family: 'Courier New', Courier, monospace;
+        h2 {
+            font-weight: normal;
+            text-align: center;
+        }
+
+        .title {
+            font-weight: normal;
+            font-family: 'Lexend Deca', sans-serif;
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%);
+        }
+        .register {
+            padding: 5px 5px;
+            border: 1px solid gray;
+            border-radius: 4px;
             
-
+            position: flex;
+            top: 10px;
+            
+            text-decoration: none;
+            font-family: 'OCR A Std', monospace;
         }
-        a {text-align: right;
-            float: right;
-        font-family: 'Courier New', Courier, monospace;}
-        .p {text-align: center;
-        height: 10px;
-        }
-        .c {text-align: center;
-        margin-top: 50px;
-        font-family: 'Courier New', Courier, monospace;}
-        form {text-align: center;}
-        </style>
+        
+        .login {
+            padding: 5px 5px;
+            border: 1px solid gray;
+            border-radius: 4px;
+            
+            position: flex;
+            top: 10px;
 
-        <script>
-            const parameters = new URLSearchParams(window.location.search);
-            const username = parameters.get('username')
-            if (username != null) {
-                window.location.href = `https://arxivador-programari.herokuapp.com/register?username=${username}`;
-            }
-        </script>
+            text-decoration: none;
+            font-family: 'OCR A Std', monospace;
+        }
+
+    </style>
         
     <body>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyTqZzX6qspPRMlWsOPlpDHsfE6YWRGlC2CzauUoXQ&s"  >
-        {% if cookie == 0 %}
-        <a href="https://arxivador-programari.herokuapp.com/login"><u>Login</u></a><a>|</a> <a href="https://arxivador-programari.herokuapp.com/register"><u>Sign Up</u></a><h1>inergi</h1>
-        {% else %}
-        <a href="https://arxivador-programari.herokuapp.com/logout"><u>Logout</u></a><h1>inergi</h1>
+        {% if session == False %}
+        <div>
+            <a class="login" href="/login">Inicia sessió</a>
+            <a class="register" href="/register">Crea la teva sessió</a>
+        </div>
+        {% elif session == True %}
+        <div>
+            <a class="login" href="/logout">Logout</a>
+        </div>
         {% endif %}
-        <h2>
-            El teu arxivador de programari
-        </h2>
-        <h3>
-            Som Kinergy, la teva opció asequible alhora d'arxivar i desenvolupar el teu programari, pots registrar-te i omplir l'aplicacó per al nostre programa ja! 
-        </h3>
-        <h3 class="c">Comença amb el programa</h3>
-        <form name="register_redirect" class="p" method="get" >
-            <input size="32" type="text" name="username" id="username" placeholder="Posa el teu nom i começa amb el nostre programa">
-            <input type="submit">
-        </form>
+
+        <div class='title'>
+            <h1>Empresa</h1>
+            <h2 id="subtitle"></h2> 
+        </div>
+
+        <script>
+            var index = 0;
+            var text = 'Aquest és un exemple del nostre producte.';
+            var speed = 100;
+    
+            function subtitle() {
+                if (index < text.length) {
+                    document.getElementById("subtitle").innerHTML += text.charAt(index);
+                    index++;
+                    setTimeout(subtitle, speed);
+                }
+            }
+            subtitle();
+        </script>      
     </body>
 </html>
